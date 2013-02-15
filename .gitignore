@@ -1,0 +1,5 @@
+# ignore the build output
+_build*
+
+# and any compiled python files
+*.pyc
