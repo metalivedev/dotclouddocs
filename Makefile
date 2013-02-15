@@ -6,7 +6,7 @@ export LC_ALL = en_US.UTF-8
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = $(shell hg root)/doc/_build
+BUILDDIR      = _build
 VERSIONS	  = 0.4 0.9
 
 # Internal variables.
