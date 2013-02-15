@@ -35,6 +35,7 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+	-rm *.pyc
 
 docs: $(VERSIONS)
 	cp -a ./newdocs.www/. $(BUILDDIR)/newdocs.www
