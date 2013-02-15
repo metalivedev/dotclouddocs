@@ -1,0 +1,147 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!--meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"-->
+
+  <title>dotCloud - {{ meta['title'] if meta and meta['title'] else title }}</title>
+
+  <meta name="description" content="{{ meta['description'] if meta }}" />
+  <meta name="keywords" content="{{ meta['keywords'] if meta }}" />
+
+<xscript 
+   type="text/javascript" 
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js">
+</xscript>
+<xscript 
+   type="text/javascript" 
+   src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js">
+</xscript>
+<xscript 
+   type="text/javascript" 
+   src="{{ pathto('_static/js/jquery.ba-urlinternal.min.js', 1) }}">
+</xscript>
+<xscript
+   type="text/javascript" 
+   src="{{ pathto('_static/js/jquery.ba-bbq.min.js', 1) }}">
+</xscript>
+
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+
+<script type="text/javascript">
+  // This is probably used by the search engine
+  var DOCUMENTATION_OPTIONS = {
+  URL_ROOT:    '{{ url_root }}',
+  VERSION:     '{{ release|e }}',
+  COLLAPSE_INDEX: false,
+  FILE_SUFFIX: '{{ '' if no_search_suffix else file_suffix }}',
+  HAS_SOURCE:  {{ has_source|lower }}
+  };
+</script>
+ 
+{%- set css_files = css_files + ['_static/' + style] %}
+{%- set css_files = css_files + ['_static/css/docs.css'] %}
+{%- set css_files = css_files + ['_static/pygments.css'] %}
+
+{%- set script_files = 
+    ['https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js']
+  + ['https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js']
+  + script_files
+%}
+
+{%- set script_files = script_files + ['_static/js/docs.js'] %}
+
+{%- for cssfile in css_files %}
+<link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+{%- endfor %}
+
+{%- for scriptfile in script_files if scriptfile != '_static/jquery.js' %}
+<script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+{%- endfor %}
+    
+{%- if favicon %}
+<link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+{%- endif %}
+
+{%- block extrahead %}{% endblock %}
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+      <div class="container_12">
+        <h1 class="grid_4" id="logo"><a href="https://www.dotcloud.com"><img src="{{ pathto('_static/img/docs-dotcloud-logo.png', 1) }}" alt="logo"></a></h1>
+        <div class="grid_8">
+          <iframe src="https://www.dotcloud.com/snippets/login_bar/" style="float: right; margin-top: 15px; color: #aaa; width: 100%;"></iframe>
+        </div>
+      </div>
+    </header>
+    <div class="container_12">
+      <div class="grid_12" style="background-color: #285a9e; border-radius: 10px; margin-bottom: 20px; color: #fff; font-size: 36px; text-shadow: #183761 1px 1px 1px;">
+        <a href="/{{version}}" style="padding: 30px; padding-left: 37px; display: block; color: #fff; text-decoration: none;">Documentation <span style="margin-left: 20px; text-align: right; font-size: 20px">{{version}}</span></a>
+        
+      </div>
+    </div>
+  <div id="main" role="main" class="container_12">
+    <nav class="grid_3" style="width: 218px;">
+      {{ toctree(collapse=False, maxdepth=3) }}
+    </nav>
+
+    <div id="main_body_content_outer" class="grid_9 content" style="width: 632px; padding-right: 30px;">
+      <div id="main_body_content" style="width: 632px; margin-left: 0;">
+	{% block body %}{% endblock %}
+      </div>
+    </div><!-- end class="content" -->
+
+  </div><!-- end id="main" -->
+    <footer>
+      <div class="container_12">
+        <div class="grid_12" style="background-color: #f7f7f7; border: 1px solid #e6e6e6; border-radius: 10px; color: #666; font-size: 14px;">
+          <div style="padding: 10px; padding-left: 37px;">
+            &copy; 2012 DotCloud
+	    {%- if show_source and has_source and sourcename %}
+	    ·
+	    <a href="{{ pathto('_sources/' + sourcename, true)|e }}"
+               rel="nofollow">View the RST source of this page</a>
+	    {%- endif %}
+	    {%- if pagename != "search" %}
+	    ·
+	    Search: 
+	    <form 
+	       style="display: inline;"
+	       class="search" action="{{ pathto('search') }}" method="get">
+	      <input type="text" name="q" size="18" />
+	      <input type="hidden" name="check_keywords" value="yes" />
+	      <input type="hidden" name="area" value="default" />
+	    </form>
+	    {%- endif %}
+          </div>
+        </div>
+        <div class="grid_12">
+          <br>
+        </div>
+      </div>
+    </footer>
+  </div> <!-- eo #container -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6096819-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

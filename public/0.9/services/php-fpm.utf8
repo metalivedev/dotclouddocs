@@ -1,0 +1,5 @@
+                   ╭───────╮                      ╭─────────╮
+                   │       │                      │         │ ┌ - PHP Worker
+   HTTP Requests ⇒ │ Nginx ╞══════ Fast-CGI ══════╡ PHP─FPM ├─┼ - PHP Worker
+                   │       │                      │         │ └ - …
+                   ╰───────╯                      ╰─────────╯

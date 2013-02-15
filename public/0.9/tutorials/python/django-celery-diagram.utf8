@@ -1,0 +1,15 @@
+  *--------*                     +----------+
+  |        |                     |          |
+  | Django >--- Enqueue tasks ---> RabbitMQ >-----.
+  |        |                     | (Broker) |     |
+  *---v----*                     +----------+     |
+      |                                           |
+      | Query                    *----------*     |
+      |                          |  Celery  <-----+
+    +-v----------+  .-- Events --<  Worker  |     |
+    |            | /             *----------*     | Consume
+    | PostgreSQL <=                               | & Run Tasks
+    |            | \             *----------*     |
+    +------------+  `-- Events --<  Celery  |     |
+                                 |  Worker  <-----'
+                                 *----------*
