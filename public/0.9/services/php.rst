@@ -82,7 +82,7 @@ Any Database
 ~~~~~~~~~~~~
 
 dotCloud let you choose the kind of database you want to use: it can be
-:doc:`mysql`, :doc:`mysql-masterslave`, :doc:`postgresql` or the document
+:doc:`mysql`, :doc:`mysql`, :doc:`postgresql` or the document
 oriented database :doc:`mongodb`. You can also use the advanced key-value
 store :doc:`redis`.
 
