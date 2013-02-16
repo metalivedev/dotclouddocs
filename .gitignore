@@ -3,3 +3,6 @@ _build*
 
 # and any compiled python files
 *.pyc
+
+# ignore dotcloud files
+.dotcloud/*
