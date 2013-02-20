@@ -49,7 +49,11 @@ following contents:
 
 .. code-block:: nginx
 
-   try_files $uri $uri/ /index.php;
+   # For Drupal 6 & 7:
+   try_files $uri $uri/ /index.php?q=$uri&$args;
+
+If you would like to learn more about the ``try_files`` directive,
+please see the `Nginx docs <http://wiki.nginx.org/HttpCoreModule#try_files>`_
 
 Initialize the database by pushing to dotCloud
 ----------------------------------------------
@@ -76,9 +80,11 @@ In the MySQL prompt that opened, type the following::
 Install Drupal using the installation wizard
 --------------------------------------------
 
-Now you can open the url you saw when you pushed (or run
-"dotcloud url my_drupal_app.www") and complete the installation wizard. To
-get the database credentials, run "dotcloud info my_drupal_app.mysql".
+Now you can open the url you saw when you pushed (or run ``dotcloud
+url www``) and complete the installation wizard. To get the database
+credentials, run ``dotcloud info mysql`` or look at the Environment
+section in your `application
+dashboard. <http://dashboard.dotcloud.com>`_
 
 
 Optionally, you can also celebrate the launch of your Drupal app with the
