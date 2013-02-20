@@ -1,6 +1,13 @@
 S3FS Shared Filesystem
 ======================
 
+.. note::
+
+  We've seen issues with the fuse libraries.  We no longer recommend this type
+  of configuration for production systems and suggest using a package like
+  https://github.com/boto/boto`
+
+
 If you need to share files between multiple services (or between multiple
 instances of a scaled services), you can mount FUSE-based filesystems like
 S3FS or GlusterFS (just to name a few).
@@ -181,3 +188,12 @@ Remember that all dotCloud services include ``s3cmd``, a small and
 convenient S3 command-line client. Try ``s3cmd --configure`` and then
 ``s3cmd ls s3://nameofthebucket`` to see what happens. ``s3cmd`` is usually
 more informative than S3FS.
+
+.. note::
+
+    There may be issues when connecting to s3 buckets with existing content. It
+    may require re-creating the directories on the newly mounted directory for
+    the existing data to appear.  Before trying this suggested workaround, it is
+    recommended that you backup your data.
+
+    http://code.google.com/p/s3fs/issues/detail?id=73
