@@ -1,0 +1,6 @@
+www:
+  type: ruby-worker
+  ports:
+    www: http
+  processes:
+    unicorn: ruby stream_demo.rb -p $PORT_WWW
