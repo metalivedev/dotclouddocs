@@ -5,7 +5,7 @@ S3FS Shared Filesystem
 
   We've seen issues with the fuse libraries.  We no longer recommend this type
   of configuration for production systems and suggest using a package like
-  https://github.com/boto/boto`
+  https://github.com/boto/boto
 
 
 If you need to share files between multiple services (or between multiple
