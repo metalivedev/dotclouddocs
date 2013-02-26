@@ -49,6 +49,14 @@ Gemfile format.
 .. literalinclude:: ./thin/Gemfile
 
 
+Rack config file
+----------------
+
+Thin can load a Rack config file. We'll use this start our Sinatra application.
+
+.. literalinclude:: ./thin/config.ru
+
+
 Ruby Code
 ---------
 

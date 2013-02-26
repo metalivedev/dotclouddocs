@@ -52,7 +52,14 @@ a standard Gemfile. dotCloud will detect this, and automatically use
 See http://gembundler.com/gemfile.html for details about bundler and the
 Gemfile format.
 
-.. literalinclude:: ./thin/Gemfile
+.. literalinclude:: ./unicorn/Gemfile
+
+Rack config file
+----------------
+
+Unicorn can load a Rack config file. We'll use this start our Sinatra application.
+
+.. literalinclude:: ./unicorn/config.ru
 
 
 Ruby Code
@@ -72,7 +79,7 @@ By default, "Ruby-Workers" don't have an http route. We'll need to expand the
 dotcloud.yml file to add a http endpoint and to connect that endpoint to the
 running process.
 
-.. literalinclude:: ./thin/dotcloud.yml
+.. literalinclude:: ./unicorn/dotcloud.yml
 
 Now we can push our application with `dotcloud push` and browse our service URL.
   
