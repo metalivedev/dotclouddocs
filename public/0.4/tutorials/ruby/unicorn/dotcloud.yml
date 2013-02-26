@@ -3,4 +3,4 @@ www:
   ports:
     www: http
   processes:
-    unicorn: ruby stream_demo.rb -p $PORT_WWW
+    unicorn: unicorn -d -I $GEM_PATH -p $PORT_WWW
