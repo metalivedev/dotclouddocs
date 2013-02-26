@@ -68,7 +68,7 @@ We now need an application that will respond to the http requests.  We create a
 ruby script that defines one trivial endpoint `/`.
 
 .. literalinclude:: ./unicorn/helloworld.rb
-:language: ruby
+    :language: ruby
 
 
 Route Requests to Unicorn
