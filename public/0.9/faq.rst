@@ -16,12 +16,24 @@ offer you the guarantees you need. If there's something missing that
 would make you feel safer, please tell us!
 
 
-I emailed you a question. Why didn't you answer?
-------------------------------------------------
+What is your Support SLA?
+-------------------------
 
-We're trying hard to answer every question as fast as possible. We're
-getting a lot of attention since our launch, and are doing our best to
-keep up!
++---------------+-----------------------------------+---------------------------------------+
+| Support Level | Operations Support                | Development Support                   |
++===============+===================================+=======================================+
+| Expedited     | * 24/7 application monitor        | * ticket response same business day   |
+|               | * 24/7 paging                     | * live chat via tickets and IRC       |
+|               | * <30 minute response             |                                       |
++---------------+-----------------------------------+---------------------------------------+
+| Live          | * 24/7 container monitoring       | * ticket response < 2 business days   |
+|               | * <1 hour response, business days | * live chat via tickets and IRC       |
++---------------+-----------------------------------+---------------------------------------+
+| Sandbox       | * machines monitored for problems | * tickets responded to as time allows |
+|               |                                   | * live chat via IRC as time allows    |
+|               |                                   | * stackoverflow monitored by engineers|
+|               |                                   | * comprehensive documentation         |
++---------------+-----------------------------------+---------------------------------------+
 
 
 Where is dotCloud hosted?
