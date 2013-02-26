@@ -1,6 +1,6 @@
 RabbitMQ
 ========
-We has decided to remove support for our RabbitMQ service. We recommend that if you still need RabbitMQ that you sign up for an account at `CloudAMQP <http://cloudamqp.com>`_.
+We have decided to remove support for our RabbitMQ service. We recommend that if you still need RabbitMQ that you sign up for an account at `CloudAMQP <http://cloudamqp.com>`_.
 
 Prices
 ------
