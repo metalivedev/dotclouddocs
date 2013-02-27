@@ -54,17 +54,15 @@ stacks.
 Can I add or remove components later?
 -------------------------------------
 
-Yes! For example, you can add memcache when you're ready for it. Or
-you can stop using Cassandra when you realize it doesn't live up to
-the hype. And so on.
+Yes! For example, you can add redis when you're ready for it. Or
+you can stop using your static website when you find that 
+you like to generate pages dynamically instead.
 
 
 You don't support my favorite database/language!
 ------------------------------------------------
 
-We are releasing our components gradually. Some are still in alpha and
-aren't accessible to all beta users. If you'd like to alpha-test a
-particular component, let us know!
+Are you sure? There are so many `recipes for custom services! <https://github.com/search?q=on+dotcloud>`_
 
 
 Do I need to use git to use dotCloud?
@@ -108,8 +106,8 @@ How do you handle scaling?
 --------------------------
 
 You may scale up any component in your stack by allocating more
-instances to it. Instances are lightweight units of parallel
-computation.
+service containers to it. Service containers are lightweight units
+of parallel computation built on `Linux containers. <https://wiki.archlinux.org/index.php/Linux_Containers#Synopsis>`_
 
 dotCloud configures new instances automatically, by applying the best
 scaling strategy specific to each component. For example, an
@@ -117,7 +115,7 @@ application server will be automatically attached to our http load
 balancers.
 
 Sometimes different scaling strategies are necessary for different
-usage profiles: for example PostgreSQL will benefit from additional
+usage profiles: for example MongoDB will benefit from additional
 slaves in a read-intensive environment, but will need a more
 sophisticated setup in write-intensive scenarios. We will offer a
 choice of scaling strategy whenever it's relevant.
@@ -156,8 +154,8 @@ How can I use SSL with dotCloud?
 --------------------------------
 
 Each web application running on dotCloud is available over HTTPS as well.
-If your application is available over http://<myapp>.dotcloud.com/,
-it will also be available over https://<myapp>.dotcloud.com/.
+If your application is available over http://<myapp-myuser>.dotcloud.com/,
+it will also be available over https://<myapp-myuser>.dotcloud.com/.
 
 Note, however, that if you want to have SSL on your own domain name,
 you will need to purchase your own SSL certificate, and upgrade to
