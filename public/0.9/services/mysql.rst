@@ -111,4 +111,9 @@ compatible with nondeterministic statements [#]_.
 
 ----
 
+Additional
+----------
+
+* :doc:`Import your existing MySQL database </tutorials/more/mysqlimport/>`
+
 .. [#] http://dev.mysql.com/doc/refman/5.1/en/replication-rbr-safe-unsafe.html
