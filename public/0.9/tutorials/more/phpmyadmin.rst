@@ -6,34 +6,50 @@ phpMyAdmin
 ==========
 
 Adding phpMyAdmin to your existing project is easy!  It can accomplished with
-the following:
+the following steps:
 
-1. Clone into the repo into our project structure, followed by removing the
-.git repository directory.
-
-::
+0. Start in the directory containing your application.
+1. Clone into the repo into your project structure, followed by removing the .git repository directory.::
 
     $ git clone https://github.com/dotcloud/phpmyadmin-on-dotcloud phpmyadmin
     $ rm -rf phpmyadmin/.git
 
-2. Edit the dotcloud.yml file to add the http interface.
+2. Edit the dotcloud.yml file to add the http interface.::
 
-::
+    db:                    # Your existing database
+      type: mysql 
 
-    db:           # Your existing database
-      type: mysql #
-    pma:          # <-- new
-      type: php   # <-- new
-    approot:      # <-- new
-      phpmyadmin  # <-- new
+    # Add This...........................................
+    # New service, can be any name, but type must be php.
+    # approot should be phpmyadmin since that is where
+    # you put the github code in the clone step.
+    pma:                   # <-- new service
+      type: php            # <-- new type
+      approot: phpmyadmin  # <-- new subdir of code
 
 
-3. dotcloud push!
+3. dotcloud push!::
 
-::
+    $ dotcloud push -A <application>
 
-    `dotcloud push -A <application>`
+4. Get the url for your phpmyadmin interface::
 
+    $ dotcloud domain list
+    pma: myapp-myusername.dotcloud.com
+
+5. Get the username and password you'll need for phpmyadmin::
+
+    $ dotcloud env list | grep MYSQL_LOGIN
+    ==> Environment variables for application myapp
+    DOTCLOUD_DB_MYSQL_LOGIN=root
+
+    $ dotcloud env list | grep MYSQL_PASSWORD
+    ==> Environment variables for application myapp
+    DOTCLOUD_DB_MYSQL_PASSWORD=something secret
+
+6. Open the ``pma`` URL in your browser and enter the LOGIN and PASSWORD.
+
+Now you're ready to manage your MySQL databases with PHPMyAdmin.
 
 .. note::
 

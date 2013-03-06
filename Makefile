@@ -55,6 +55,9 @@ $(VERSIONS):
 		-D html_static_path=					\
 		-b dirhtml public/$@ $(BUILDDIR)/newdocs.www/$@
 
+push: docs
+	dotcloud push _build/newdocs.www
+
 pdf: latex
 	make -C $(BUILDDIR)/latex all-pdf
 
