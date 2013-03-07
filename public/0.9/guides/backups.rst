@@ -13,7 +13,7 @@ This will show you how to automatically backup services running on dotCloud.
 What Can I Backup?
 ------------------
 
-This script currently fits:
+Below you'll find a sample script that currently fits:
 
 * MySQL databases (stand-alone or master/slave),
 * PostgreSQL and PostGIS databases (the method is exactly the same),
@@ -238,3 +238,11 @@ a failure). If an error occurs, the email notification should mention it.
    line. To avoid disclosing your passwords, we specify MAILTO="" so
    cron will never send an email by itself; and then we pipe the backup
    script through the "mail" command to specify the email subject ourselves.
+
+Restoring Backups
+-----------------
+
+After you've completed all the steps in this Guide, you should
+practice restoring the backup to a sandbox application. For an example
+with MySQL, please see 
+the :doc:`MySQL Import tutorial. </tutorials/more/mysqlimport>`
