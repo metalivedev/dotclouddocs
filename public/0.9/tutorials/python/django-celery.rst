@@ -349,13 +349,13 @@ launch and monitor the Celery workers and the ``celerycam`` daemons:
 .. code-block:: ini
 
    [program:djcelery]
-   directory = $HOME/current/
+   directory = /home/dotcloud/current/
    command = python minestrone/manage.py celeryd -E -l info -c 2
    stderr_logfile = /var/log/supervisor/%(program_name)s_error.log
    stdout_logfile = /var/log/supervisor/%(program_name)s.log
 
    [program:celerycam]
-   directory = $HOME/current/
+   directory = /home/dotcloud/current/
    command = python minestrone/manage.py celerycam
    stderr_logfile = /var/log/supervisor/%(program_name)s_error.log
    stdout_logfile = /var/log/supervisor/%(program_name)s.log
@@ -371,7 +371,7 @@ Defines a new background process configuration block. The process is called
 
 .. code-block:: ini
 
-   directory = $HOME/current/
+   directory = /home/dotcloud/current/
    command = python minestrone/manage.py celeryd -E -l info -c 2
 
 These two lines tell Supervisor how the background process should be launched:
@@ -402,19 +402,19 @@ if we are on the "workers" service:
    # …
 
    dotcloud_get_env() {
-       sed -n "/$1/ s/.*: \"\(.*\)\".*/\1/p" < "$HOME/environment.json"
+       sed -n "/$1/ s/.*: \"\(.*\)\".*/\1/p" < "/home/dotcloud/environment.json"
    }
    
    setup_django_celery() {
-       cat > $HOME/current/supervisord.conf << EOF
+       cat > /home/dotcloud/current/supervisord.conf << EOF
    [program:djcelery]
-   directory = $HOME/current/
+   directory = /home/dotcloud/current/
    command = python minestrone/manage.py celeryd -E -l info -c 2
    stderr_logfile = /var/log/supervisor/%(program_name)s_error.log
    stdout_logfile = /var/log/supervisor/%(program_name)s.log
 
    [program:celerycam]
-   directory = $HOME/current/
+   directory = /home/dotcloud/current/
    command = python minestrone/manage.py celerycam
    stderr_logfile = /var/log/supervisor/%(program_name)s_error.log
    stdout_logfile = /var/log/supervisor/%(program_name)s.log
