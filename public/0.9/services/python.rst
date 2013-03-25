@@ -234,6 +234,7 @@ of your application. For example:
 You can also modify the following uWSGI options in the config section of
 ``"dotcloud.yml"``:
 
+- ``uwsgi_processes``: integer, the number of workers to spawn (the default is 4);
 - ``uwsgi_memory_report``: if set to true, this will log each request with
   information about the memory usage (the default is false);
 - ``uwsgi_buffer_size``: set (in bytes) the size of the buffer used to parse uwsgi
