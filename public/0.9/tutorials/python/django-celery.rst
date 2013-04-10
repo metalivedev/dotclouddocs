@@ -421,7 +421,7 @@ if we are on the "workers" service:
    EOF
    }
 
-   if [ `dotcloud_get_env SERVICE_NAME` = workers ] ; then
+   if [ `dotcloud_get_env DOTCLOUD_SERVICE_NAME` = workers ] ; then
        setup_django_celery
 
    # …
