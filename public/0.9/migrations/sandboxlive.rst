@@ -3,7 +3,7 @@ Sandbox to Live
 On April 25th, 2013, we will sunset our free *Sandbox* flavor and
 focus more on open-sourcing more of the dotCloud code to make
 containers and PaaS something that everyone can do. You can read more
-about it on our `blog <blog.dotcloud.com/new-sandbox>`_.
+about it on our `blog <http://blog.dotcloud.com/new-sandbox>`_.
 
 This document will help gather frequently asked questions and
 techniques for preserving your application.
