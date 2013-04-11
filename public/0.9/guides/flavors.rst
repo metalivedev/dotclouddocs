@@ -5,22 +5,32 @@
 Application Flavors
 ====================
 
-.. include:: ../dotcloud2note.inc
+The primary "flavor" of dotCloud applications is called *Live*. This
+gives simple pricing based entirely on the RAM you reserve with
+``dotcloud scale``. You will need to enter your credit card
+information into `your account
+<https://dashboard.dotcloud.com/settings/billing>`_ before you can
+create a *Live* application. There is no separate fee for network
+or disk bandwidth, and 10G of disk storage is included for each 1G of
+RAM you reserve.
 
-dotCloud comes with different "flavors". Flavors all share the same 
-work-flow but have different features and prices. You choose the flavor 
-to use when you create an application and you can have as many 
-applications with as many different flavors as you want, all on the same 
-dotCloud account.
+For some customers we also enable the *Enterprise* flavor which
+runs in a separate cluster and includes a higher level of
+monitoring. This is available upon request but may require extra fees.
 
-For example to create an application with the "Live" flavor, you can do::
+Flavors all share the same work-flow but have different features and
+prices. You choose the flavor to use when you create an application
+and you can have as many applications with as many different flavors
+as you want, all on the same dotCloud account.
+
+For example to create an application with the *Live* flavor, you can do::
 
    dotcloud create -f live  myapplication
 
-Likewise, to create an application with the "Sandbox" flavor, you can do
-do::
+Likewise, to create an application with the *Enterprise* flavor, you can do
+do (if your account has been enable to run apps on this cluster)::
 
-   dotcloud create -f sandbox mytestapplication
+   dotcloud create -f enterprise mytestapplication
 
 Once your application has been created you can push your code as usual
 with ``"dotcloud push"``.
@@ -30,27 +40,11 @@ with ``"dotcloud push"``.
   You can't change the flavor of an application once it has been pushed,
   so take the time to choose the right one!
 
-dotCloud has three different flavors and a "legacy" flavor for
-application created before the introduction of flavors. Let's review
-them:
-
-Sandbox
--------
-
-The Sandbox flavor allows you to test the platform and develop simple
-applications for free. You can have as many services as you want in a
-sandbox application, you have access to the full service :doc:`catalog
-</services/index>` and :doc:`websockets <websockets>`.
-
-However sandbox applications:
-
-- cannot be :doc:`scaled <scaling>`;
-- cannot be attached to :doc:`Custom Domains <domains>`;
-- will be put in hibernation after a period of inactivity [#]_;
-- run on a best effort, slower cluster.
+Flavors: Current and Past
+-------------------------
 
 Live
-----
+....
 
 The Live flavor is targeted at both development and production and is
 the preferred dotCloud flavor. It comes with all the platform features:
@@ -63,7 +57,7 @@ at a `hourly rate <https://www.dotcloud.com/pricing.html>`_, make sure
 you correctly set your :ref:`memory limits <scaling_vertically>`!
 
 Enterprise
-----------
+..........
 
 The Enterprise flavor is similar to the Live flavor but comes with
 premium support and custom application level monitoring.
@@ -84,59 +78,24 @@ Flavors Features Comparison
 Here is a table to quickly know if the feature you need is in a specific
 flavor:
 
-+-----------------------------------------------+---------+------+------------+
-| Feature ↴, Flavor →                           | Sandbox | Live | Enterprise |
-+===============================================+=========+======+============+
-| Websockets                                    | ✔       | ✔    | ✔          |
-+-----------------------------------------------+---------+------+------------+
-| Piggyback SSL                                 | ✔       | ✔    | ✔          |
-+-----------------------------------------------+---------+------+------------+
-| Scaling (``dotcloud scale``)                  | ✘       | ✔    | ✔          |
-+-----------------------------------------------+---------+------+------------+
-| Custom Domains & SSL (``dotcloud alias``)     | ✘       | ✔    | ✔          |
-+-----------------------------------------------+---------+------+------------+
-| Custom Monitoring                             | ✘       | ✘    | ✔          |
-+-----------------------------------------------+---------+------+------------+
++-----------------------------------------------+------+------------+
+| Feature ↴, Flavor →                           | Live | Enterprise |
++===============================================+======+============+
+| Websockets                                    | ✔    | ✔          |
++-----------------------------------------------+------+------------+
+| Piggyback SSL                                 | ✔    | ✔          |
++-----------------------------------------------+------+------------+
+| Scaling (``dotcloud scale``)                  | ✔    | ✔          |
++-----------------------------------------------+------+------------+
+| Custom Domains & SSL (``dotcloud alias``)     | ✔    | ✔          |
++-----------------------------------------------+------+------------+
+| Custom Monitoring                             | ✘    | ✔          |
++-----------------------------------------------+------+------------+
 
 Checking the Cost of your Application
 -------------------------------------
 
-You can use ``dotcloud info`` to check how much an application costs
-with the `Live` or `Enterprise` flavors::
+You can use the `dashboard <https://dashboard.dotcloud.com/>`_ to check how much
+an application costs with the `Live` or `Enterprise` flavors.
 
-   dotcloud info
 
-You can even do that on a specific service::
-
-   dotcloud info www
-
-Or, if your scaled your service :ref:`horizontally <scaling_horizontally>`,
-on a specific service instance::
-
-   dotcloud info www.0
-
-To get detailed costs information.
-
-.. note::
-
-   “Total reserved” will not be displayed for Sandbox applications
-   because memory is not guaranteed to be available with the Sandbox
-   flavor.
-
-Legacy
-------
-
-The Legacy flavor is for applications deployed before the introduction
-of the flavors system in June 2012.
-
-You can't create new applications with the Legacy flavor, however, you can
-continue to use them (and you will be billed at the same rate), with no
-restrictions until December 14, 2012. After this date, applications with 
-the Legacy flavor will be moved to the Sandbox flavor.
-
-If you wish to move an application from Legacy to Live, please contact us, with
-the name of your application, on `support <mailto:support@dotcloud.com>`_!
-
-----
-
-.. [#] When that happens, the application is simply woke up on the next HTTP request.
