@@ -84,7 +84,7 @@ Rails Applications
 ^^^^^^^^^^^^^^^^^^
 
 Those applications should work out of the box. You can learn more
-about the way passenger handles Rails apps in th e`the passenger RoR doc 
+about the way passenger handles Rails apps in the `the passenger RoR doc 
 <http://www.modrails.com/documentation/Users%20guide%20Nginx.html#deploying_a_ror_app>`_ for details.
 
 
