@@ -8,7 +8,7 @@ All payments for RabbitMQ instances on CloudAMQP.com will be processed by CloudA
 
 CloudAMQP offers different RabbitMQ plans. For a full list of prices, refer to their `pricing page <http://www.cloudamqp.com/plans.html>`_.
 
-They have a Free plan which you can use for your Sandbox applications, and 3 different paid plans which would be good for any live applications.
+They have a Free plan to try things out and 3 different paid plans which would be good for any live applications.
 
 Documentation
 -------------

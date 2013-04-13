@@ -14,10 +14,10 @@ Quick Start Guide
 Prerequisites
 -------------
 
-This guide assumes you have already `signed
-up <http://www.dotcloud.com/accounts/register>`_ and :doc:`installed the
-CLI <install>`. This example will require approximately 10
-minutes to complete.
+This guide assumes you have already `signed up
+<http://www.dotcloud.com/accounts/register>`_ , added your credit card
+information, and :doc:`installed the CLI <install>`. This example will
+require approximately 10 minutes to complete.
 
 
 A Simple Example
@@ -50,8 +50,7 @@ Fire up your favorite text editor, write a message to yourself and save it as
 
 
 Then ``create`` your application.  In this example, we'll name the
-application, "helloworldapp", and use the default flavor, "sandbox",
-which is free.
+application, "helloworldapp", and use the default flavor.
 
 .. code-block:: none
 
@@ -60,8 +59,8 @@ which is free.
 
 .. note::
 
-  By default, your application will be created using the free
-  "sandbox" flavor. Application flavors correspond to different
+  **After April 25, 2013, your application will be created using the paid
+  "Live" flavor by default.** Application flavors correspond to different
   runtime environments (clusters), features, and pricing.
   See :doc:`Flavors <../guides/flavors>` for more information.
 

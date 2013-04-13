@@ -77,9 +77,8 @@ parts:
 Once you have the files listed in step 2, please deploy a
 new, temporary app to transfer them to dotCloud in a secure manner.
 
-Create a new application for the transfer. It is ok to use a 'sandbox'
-app for the transfer. In this example, let's call the new application
-"edge":
+Create a new application for the transfer. In this example, let's call
+the new application "edge":
 
 ::
 

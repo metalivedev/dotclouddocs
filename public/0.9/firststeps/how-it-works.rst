@@ -62,7 +62,7 @@ The Deployer
 ------------
 
 If your application built successfully, then the platform deploys your
-stack on the Sandbox, Live or Enterprise cluster depending on its
+stack on the Live or Enterprise cluster depending on its
 :doc:`flavor </guides/flavors>`.
 
 It starts by initializing a full new stack of service, while the current

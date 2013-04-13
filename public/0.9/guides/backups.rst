@@ -243,6 +243,6 @@ Restoring Backups
 -----------------
 
 After you've completed all the steps in this Guide, you should
-practice restoring the backup to a sandbox application. For an example
-with MySQL, please see 
-the :doc:`MySQL Import tutorial. </tutorials/more/mysqlimport>`
+practice restoring the backup to another copy of your application. For
+an example with MySQL, please see the :doc:`MySQL Import
+tutorial. </tutorials/more/mysqlimport>`

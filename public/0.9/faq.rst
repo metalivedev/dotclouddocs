@@ -29,11 +29,6 @@ What is your Support SLA?
 | Live          | * 24/7 container monitoring       | * ticket response < 2 business days   |
 |               | * <1 hour response, business days | * live chat via tickets and IRC       |
 +---------------+-----------------------------------+---------------------------------------+
-| Sandbox       | * machines monitored for problems | * tickets responded to as time allows |
-|               |                                   | * live chat via IRC as time allows    |
-|               |                                   | * stackoverflow monitored by engineers|
-|               |                                   | * comprehensive documentation         |
-+---------------+-----------------------------------+---------------------------------------+
 
 
 Where is dotCloud hosted?

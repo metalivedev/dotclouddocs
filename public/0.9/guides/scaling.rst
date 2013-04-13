@@ -198,12 +198,6 @@ You can consult the memory usage of your service with ``dotcloud info``::
 
 .. note::
 
-   “total reserved” will not be displayed for sandbox applications
-   because memory is not guaranteed to be available on the Sandbox
-   flavor.
-
-.. note::
-
    You can currently scale anywhere between 32MB and 64GB. However scaling
    above 4GB must be explicitly enabled for your account, `contact us
    <support@dotcloud.com>`_ if you need it!

@@ -15,7 +15,7 @@ or disk bandwidth, and 10G of disk storage is included for each 1G of
 RAM you reserve.
 
 For some customers we also enable the *Enterprise* flavor which
-runs in a separate cluster and includes a higher level of
+runs in a separate cluster and includes our highest level of
 monitoring. This is available upon request but may require extra fees.
 
 Flavors all share the same work-flow but have different features and
@@ -40,8 +40,8 @@ with ``"dotcloud push"``.
   You can't change the flavor of an application once it has been pushed,
   so take the time to choose the right one!
 
-Flavors: Current and Past
--------------------------
+Flavors
+-------
 
 Live
 ....
