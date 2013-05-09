@@ -55,26 +55,50 @@ configuration and initialization in ``php.ini``.  You just have to
 load the New Relic PHP extension agent and let the agent know where to
 find the daemon and where to log. It is important to provide the
 ``extension`` value *without* quotes and all the ``newrelic.`` values
-*with* quotes::
+*with* quotes:
+
+
+.. note::
+
+   The example intentionally comments out the New Relic configurations. We'll
+   use a `post-install build hook
+   <http://docs.dotcloud.com/guides/hooks/#post-install>`_ to uncomment the the
+   configurations.  This avoids any conflicts with "pear update-channels" and
+   New Relic when building your application.
+
+::
 
   ; Edit or create php.ini
   ; Give full path to the newrelic agent
   extension=/home/dotcloud/current/newrelic-20100525.so
   ; Give full path to the new relic daemon. The agent will start this as needed.
-  newrelic.daemon.location="/home/dotcloud/current/newrelic-daemon.x64"
+  ;newrelic.daemon.location="/home/dotcloud/current/newrelic-daemon.x64"
 
   ; Add your license key
-  newrelic.license="your_license_key"
+  ;newrelic.license="your_license_key"
 
   ; The location of the logs can be any writable directory.
-  newrelic.logfile="/home/dotcloud/current/php_agent.log"
-  newrelic.daemon.logfile="/home/dotcloud/current/newrelic-daemon.log"
+  ;newrelic.logfile="/home/dotcloud/current/php_agent.log"
+  ;newrelic.daemon.logfile="/home/dotcloud/current/newrelic-daemon.log"
 
-.. note:: 
+.. note::
+
    You can also specify extra New Relic options in ``php.ini``; see
    the `New Relic PHP docs
    <https://newrelic.com/docs/php/php-agent-phpini-settings>`_ for
    more information about those.
+
+
+Create a file in your application root called "postinstall".  Using the sed
+command will uncomment the New Relic configurations after the code is
+installed.
+
+.. code-block :: bash
+
+    #!/bin/bash
+    set -e
+
+    sed -i 's/;newrelic/newrelic/' /full/path/to/your/php.ini
 
 
 Start the New Relic Daemon
