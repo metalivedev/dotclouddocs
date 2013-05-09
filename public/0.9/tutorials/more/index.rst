@@ -9,7 +9,8 @@ Tutorials:
 
 .. toctree::
    :maxdepth: 1
-   
+
+   amazon-rds
    cloudamqp
    newrelic
    nodesocket
@@ -17,4 +18,5 @@ Tutorials:
    twilio
    phpmyadmin
    mysqlimport
+
 
