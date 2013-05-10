@@ -19,7 +19,9 @@ Example dotcloud.yml
 --------------------
 
 The best way to explain the contents of a Build File is to walk through
-an example. Let's look at a Build File with all the options.
+an example. Let's look at a Build File with all the options. Don't worry,
+your typical Build File will be *much* shorter than this example,
+which contains almost all the bells and whistles that you could ever use.
 
 .. code-block:: yaml
 
@@ -82,7 +84,7 @@ The Build File is YAML formatted, so it is easily read by humans and
 computers alike. Most developers create the Build File using a text editor
 because the format is so simple. 
 
-In YAML, indentation is important. Each indentation is **two spaces**!!!
+In YAML, indentation is important. You should use **spaces, not tabs**!!!
 
 In this example ``dotcloud.yml`` we define an application with two
 services: a Ruby service named *servicename1* and a Python service
@@ -100,7 +102,7 @@ might set for more control over your service. We'll discuss each of
 the parameters below in more detail.
 
 *servicename*: Naming Your Service
---------------------------------
+----------------------------------
 
 The name for your service can be up to 16 characters long, from the
 set _a-z0-9 (that is, all lowercase, digits and underscores allowed
