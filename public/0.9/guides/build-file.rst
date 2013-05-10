@@ -103,10 +103,10 @@ the parameters below in more detail.
 --------------------------------
 
 The name for your service can be up to 16 characters long, from the
-set a-z0-9_ (that is, all lowercase, no spaces, digits and underscores
-allowed). In the example above, we chose "servicename", but that could
-have been "www", "a_cool_name_1234", etc. You will use this name a
-lot! This is how you tell the dotCloud CLI which service you want to
+set _a-z0-9 (that is, all lowercase, digits and underscores allowed
+but no spaces). In the example above, we chose "servicename", but that
+could have been "www", "a_cool_name_1234", etc. You will use this name
+a lot! This is how you tell the dotCloud CLI which service you want to
 scale, destroy, get logs from, or shell into. You'll be able to see
 the amount of RAM used by each copy of this service by name in the
 `dashboard <https://dashboard.dotcloud.com>`_
@@ -119,13 +119,13 @@ you will continue to have access too it via SSH. You will also
 continue to get billed!
 
 **To destroy a service** you must use ``dotcloud destroy`` +
-*servicename*. If you do not want it to reappear in the next push,
-*then you must also remove the service from your ``dotcloud.yml``. 
+*servicename*. If you do not want the service to reappear in the next
+push, then you must also remove it from your ``dotcloud.yml``.
 
 Removing a service from your ``dotcloud.yml`` file can be a way to
-prevent it from getting updates in the next push. But you will not be
-able to scale your services until you add the missing services(s) back
-in to ``dotcloud.yml``.
+prevent it from getting updates or otherwise changing the container in
+the next push. But you will not be able to scale your services until
+you add the missing service(s) back in to ``dotcloud.yml``.
 
 type: Defining Your Service
 ---------------------------
