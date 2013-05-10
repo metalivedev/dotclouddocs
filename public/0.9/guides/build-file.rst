@@ -32,7 +32,7 @@ an example. Let's look at a Build File with all the options.
 
     # Required parameters for a service: service name and type
     servicename2:        # Any name up to 16 characters using a-z, 0-9 and _
-      type: nodejs       # Must be valid service type.
+      type: python       # Must be valid service type.
 
       # ---------------------------------------------------------------
       # Optional parameters: All the following parameters are optional.
@@ -73,8 +73,10 @@ an example. Let's look at a Build File with all the options.
         process_name1: path/to/executable1
 	process_name2: path/to/executable2
 
-      # Used only in PERL and PHP services
-      requirements: (list) # Defaults to empty list.
+      # List of dependencies, best for PERL/PHP but also Python and Ruby
+      requirements: # Defaults to empty list.
+        - dependency_package_name_1
+	- dependency_package_2
 
 The Build File is YAML formatted, so it is easily read by humans and
 computers alike. Most developers create the Build File using a text editor
@@ -83,7 +85,7 @@ because the format is so simple.
 In YAML, indentation is important. Each indentation is **two spaces**!!!
 
 In this example ``dotcloud.yml`` we define an application with two
-services: a Ruby service named *servicename1* and a NodeJS service
+services: a Ruby service named *servicename1* and a Python service
 named *servicename2*.
 
 In line 1, we create a service named *servicename1*. Any indented line
@@ -241,11 +243,12 @@ systempackages: Install Additional System Packages
 --------------------------------------------------
 
 The ``systempackages`` parameter was originally only available in the
-*custom* type service, but now it is available in all services. This
-allows you to install almost any additional software quickly & easily
--- as long as the said software is part of the official Ubuntu 10.04
-LTS repositories. All you have to do is to list the packages you want
-to install in the *build file*, using the following syntax:
+*custom* type service, but now it is available in all Code (not Data)
+services. This allows you to install almost any additional software
+quickly & easily -- as long as the said software is part of the
+official Ubuntu 10.04 LTS repositories. All you have to do is to list
+the packages you want to install in the *build file*, using the
+following syntax:
 
 .. code-block:: yaml
 
@@ -273,9 +276,12 @@ The ``config`` parameters vary depending on the service you're
 running. They can allow you to specify a version (e.g. Python 2.6
 versus 2.7) or set other values that determine either how the service
 starts up or how to configure the container. For that reason,
-``config`` values can only change when you have a new container. If
-you want to change a ``config`` parameter, you must destroy the
-service first (e.g. ``dotcloud destroy servicename1``). 
+``config`` values can only change when you have a new container. That
+means for Code type services you can make changes and they will have
+an effect in your next push, but for Data type services you must
+destroy your container explicitly first to get the new config
+parameters. **Destroying a Data type service will result in losing all
+your data!** So you should back up first if your data is valuable.
 
 For more information about specific configuration parameters, please
 see the individual service documentation.
@@ -379,9 +385,13 @@ generate a ``supervisor.conf`` file. This file will configure
    log files, and will allow you to stop/start/restart them
    independently by name.
 
-requirements: PERL/PHP Depenencies
-----------------------------------
+requirements: Listing Code Service Dependencies
+-----------------------------------------------
 
-The ``requirements`` parameter only has meaning in the context of a
-PERL or PHP type service. Please see :doc:`../services/php` and
-:doc:`../services/perl`.
+The ``requirements`` parameter lets you list your Code service
+dependencies. Not every Code service uses this parameter. In
+particular, you can use it with PERL, PHP, Python and Ruby. The
+dependencies will be installed according to the rules of each
+service. For Python and Ruby we recommend using the
+``requirements.txt`` and ``Gemfile`` dependency lists instead, keeping
+more in-line with how those languages typically define dependencies.
