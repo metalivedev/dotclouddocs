@@ -325,25 +325,22 @@ Scaling
 Scaling is only partially supported with custom services. If you
 scale a custom service handling HTTP traffic, the HTTP requests
 will be balanced between the different service instances in a round-robin
-fashion. TCP and UDP traffic will, however, only hit the first
-instance.
+fashion. TCP and UDP traffic, however, will not be load-balanced at
+all: each scaled instance will be allocated its own set of TCP and UDP
+ports, and it will be up to you to spread the traffic evenly.
 
 Our roadmap towards fully scalable and high-available custom
-services includes the following items:
-
-* expose in ``environment.json`` the individual TCP and UDP ports
-  of each service (instead of the first service only);
-* give an option, for each port, to choose between "load balancing"
-  and "master/slave": the first one dispatches the connections (or
-  packets, for UDP traffic) to all instances, while the second one
-  will send all the traffic to a single instance, swapping it transparently
-  with another instance if it goes down (just like our MySQL
-  and Redis master/slave services already do).
+services includes giving an option, for each port, to choose between
+"load balancing" and "master/slave": the first one dispatches the
+connections (or packets, for UDP traffic) to all instances, while the 
+second one will send all the traffic to a single instance, swapping it
+transparently with another instance if it goes down (just like our MySQL
+and Redis master/slave services already do).
 
 Meanwhile, it is technically possible to emulate the "load balancing"
 behavior by deploying e.g. a custom service holding a HAProxy load
-balancer, and sending traffic to multiple single-instance services,
-as show in the fictious build file below:
+balancer. This load balancer would check ``environment.json`` and
+retrieve the different endpoints allocated to the scaled service.
 
 .. code-block:: yaml
 
@@ -355,24 +352,16 @@ as show in the fictious build file below:
      buildscript: haproxy/builder
      haproxy_mode: tcp
      haproxy_backends: zmqback*
-   zmqback1:
+   zmqback:
      type: custom
+     instances: 4
      buildscript: zmqback/builder
      ports:
        zmq: tcp
-   zmqback2:
-     type: custom
-     buildscript: zmqback/builder
-     ports:
-       zmq: tcp
-   zmqback3:
-     type: custom
-     buildscript: zmqback/builder
-     ports:
-       zmq: tcp
-
+   
 We don't recommend using that kind of recipe for anything else than
-testing, but hey, if that's the only piece missing to deploy your app
+testing (since the HAProxy load balancer itself will be a single point
+of failure), but hey, if that's the only piece missing to deploy your app
 on dotCloud, here you have it!
 
 
