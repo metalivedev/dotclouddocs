@@ -3,14 +3,6 @@ Custom Service
 
 .. include:: ../dotcloud2note.inc
 
-.. warning::
-   The custom service specification is in constant flux. More features
-   will be added before the public release, and the best practices
-   described in this document might change as well. We will do our
-   best to avoid changes that could break an existing custom service,
-   but we cannot promise that this won't happen. In other words:
-   this is beta, so please handle it accordingly! Thank you.
-
 The custom service does not include specific support for a fixed
 language or framework. Instead, it comes pre-loaded with a whole host
 of interpreters, compilers, and libraries, as well as a very flexible
@@ -32,8 +24,7 @@ using this custom service:
   `Jenkins <https://github.com/dotcloud/jenkins-on-dotcloud>`_,
   `Gitosis <https://github.com/dotcloud/gitosis-on-dotcloud>`_,
   `Hummingbird <https://github.com/jpetazzo/hummingbird>`_;
-* support for legacy DOS applications running in a browser;
-* etc.
+* `and many more! <https://github.com/search?q=on-dotcloud&type=Repositories>`_
 
 Custom services can be used in your dotCloud stack just like any other
 service. For instance, you could have a dotCloud application using
@@ -151,13 +142,12 @@ setuptools can generally be installed in a cleaner way using
 ``python setup.py install``.
 
 You should not assume anything about the location of your code while
-the *build script* runs. It will probably be some path under
-``/tmp``, but that might change in the future, so never ever hard-code
-the path where your *build script* will run). As said previously,
-you can however rely on the fact that the *build script* will run
-at the root of your code (that is the "absolute" root of your
-code; not the *approot* that you might have used previously in classical
-services).
+the *build script* runs. Currently it is under ``/tmp/code``. That
+might change in the future, so never ever hard-code the path where
+your *build script* will run. As said previously, you can however
+rely on the fact that the *build script* will run at the root of your
+code (that is the "absolute" root of your code; not the *approot* that
+you might have used previously in classical services).
 
 The place where your service is *built* will not always be the same
 as the place where your service is *run*: your code can be placed
@@ -314,97 +304,6 @@ will be slightly different:
    The name you give to each process will be used as a base for
    log files, and will allow you to stop/start/restart them
    independently by name.
-
-
-Expose Additional Ports
------------------------
-
-By default, dotCloud services are allocated HTTP or TCP ports,
-depending of their type. Most database services like MySQL, MongoDB,
-PostgreSQL... will expose a TCP port allowing to contact them using
-their native protocol. All web-oriented services will expose a HTTP port,
-which can in turn be used with your :doc:`/guides/domains`.
-Some services like RabbitMQ will expose *both* a TCP port (for AMQP
-protocol) and a HTTP port (for administration). All services also expose
-at least a SSH endpoint over a SSH port.
-
-You can request additional UDP and TCP ports for your custom service,
-as shown in the following ``dotcloud.yml`` file (other parameters
-have been omitted for clarity):
-
-.. code-block:: yaml
-
-   service:
-     type: custom
-     ports:
-       www: http
-       logs: tcp
-       control: tcp
-       peek: udp
-
-Each port entry will create several variables in the environment file:
-
-For TCP/UDP ports:
-
-- ``PORT_LOGS``: The port where your should bind your server to;
-- ``DOTCLOUD_SERVICE_LOGS_HOST``: The host where your server is running;
-- ``DOTCLOUD_SERVICE_LOGS_PORT``: The port where your server is
-  reachable (used on the client side);
-- ``DOTCLOUD_SERVICE_LOGS_URL``: both of the above.
-
-``LOGS`` is the upper case name of the port entry.
-
-For HTTP ports:
-
-- ``PORT_WWW``: The port where you should bind your server to;
-- ``DOTCLOUD_SERVICE_HTTP_HOST``: The host where your server is running;
-- ``DOTCLOUD_SERVICE_HTTP_URL``: Like above but as an URL.
-
-Likewise, ``WWW`` is the upper case name of the port entry.
-
-If you vertically scale a service with "custom ports", then the
-environment will contain additional variables suffixed with ``_#``, "#"
-being the instance number of the service. Each additional variable
-contain the port informations for the service instance it is attached
-to. Finally, the unsuffixed variables are identical to the variables
-suffixed with ``_0``.
-
-.. note::
-
-   Note how the port you listen to will not be the same as the port you
-   will connect to. For instance, in the above example, ``$PORT_LOGS``
-   might be 42801 (indicating that the program using it will have to
-   ``bind()`` to local port 42801), but it will be accessible from the
-   outside using a totally different port like 17455.
-
-
-Install Additional System Packages
-----------------------------------
-
-The custom service also allows you to install almost any additional
-software quickly & easily -- as long as the said software is part
-of the official Ubuntu 10.04 LTS repositories. All you have to do
-is to list the packages you want to install in the *build file*,
-using the following syntax:
-
-.. code-block:: yaml
-
-   www:
-     type: custom
-     systempackages:
-       - openoffice.org
-       - mysql-client-5.1
-
-.. note::
-   The packages and their dependencies will be installed, but no
-   daemon of background process will be started automatically.
-   For instance, if you list Apache in system packages, it will be
-   installed, but it won't be started. You will have to execute it
-   from e.g. a ``run`` script or ``process`` configuration directive.
-   If you are looking for a specific package, check `Ubuntu's package
-   directory <http://packages.ubuntu.com/>`_ (keeping in mind that
-   you can only install packages from the 10.04 LTS repository,
-   codenamed "lucid").
 
 
 Available Resources
