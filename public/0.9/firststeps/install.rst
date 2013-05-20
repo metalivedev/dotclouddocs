@@ -48,22 +48,26 @@ Interface client (CLI) installed on your computer. If you have previously instal
       #. After the installation, you should have a Cygwin icon on your desktop.
          Start it: you will get a command-line shell.
       #. Download easy_install
-         .. code-block:: none
+         
+          .. code-block:: none
 
             wget http://peak.telecommunity.com/dist/ez_setup.py
 
       #. Install it
-         .. code-block:: none
+         
+          .. code-block:: none
 
             python ez_setup.py
 
       #. You now have easy_install; let's use it to install pip
-         .. code-block:: none
+         
+          .. code-block:: none
 
             easy_install pip
 
       #. Now install dotcloud
-         .. code-block:: none
+         
+          .. code-block:: none
          
             pip install dotcloud
 
