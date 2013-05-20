@@ -122,7 +122,7 @@ variables. The following 4 variables should be set:
 
 To set them, you will run a command like the following one::
 
-  dotcloud var set yourappname \
+  dotcloud env set \
              S3FS_BUCKET=yourbucketname \
              S3FS_MOUNTPOINT=/home/dotcloud/store \
              S3FS_ACCESSKEY=AKI1234567ABCDEFGHIJ \
