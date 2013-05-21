@@ -143,13 +143,12 @@ While there is a lot of freedom in naming your service, the service
  nodejs         postgis
  perl           postgresql
  perl-worker    redis
- php            solr
- php-worker      
+ php            smtp
+ php-worker     solr
  python          
  python-worker   
  ruby            
  ruby-worker     
- smtp            
  static          
  =============  =============
 
