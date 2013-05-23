@@ -4,45 +4,46 @@ WebSockets
 As of mid-March 2012, all applications deployed on dotCloud can receive connections
 over `WebSockets <http://en.wikipedia.org/wiki/WebSocket>`_ as well as standard HTTP.
 
-There are a few details that you might want to know about Websockets!
+Examples
+--------
+We have these examples of websocket usage on the dotCloud PaaS:
 
+* **Node.js** https://github.com/dotcloud/socket.io-on-dotcloud
+* **Python** https://github.com/dotcloud/geventwebsocket-on-dotcloud
 
-Enable WebSockets Support
--------------------------
+You're Already Enabled for WebSockets Support!
+----------------------------------------------
 
-If you are accessing your application through *something*.dotcloud.com, there is
-nothing to do. HTTP requests to your application are already handled by our
-WebSocket-aware HTTP load balancers.
+All of our main gateways can proxy websockets because they are running `Hipache`_, and if you request it, 
+your custom SSL edges can run Hipache as well.
 
-If you are using a :doc:`custom domain <domains>`, the ``dotcloud alias`` command
-instructed you to setup a CNAME to *gateway.dotcloud.com*. You need to update
-that CNAME to *ws.dotcloud.com* instead.
+If you are accessing your application through *something*.dotcloud.com, 
+then you are going through our main gateways and so you can use websockets.
 
-.. note::
-   The WebSocket-aware HTTP loadbalancers will soon serve traffic for *gateway.dotcloud.com*
-   as well. But during a transition period, we want to make sure that everyone has the
-   opportunity to test the behavior of his app with those new load-balancers, while
-   having the option to switch back to the old load balancer if any incompatibility
-   arises.
+If you are using a :doc:`custom domain <domains>`, and you do **not** have custom SSL edges, 
+then your CNAME points to *gateway.dotcloud.com*, our main gateways, and so you can use websockets.
 
+**However**, if your CNAME points to custom edges used for your SSL certificates, 
+then you must let the `support team <http://support.dotcloud.com>`_ know so that we can make sure
+your edges are running `Hipache`_. By default we create custom edges using a version of Nginx which does not
+support websockets, so we may need to upgrade your edges.
 
 WebSocket over SSL
 ------------------
 
-What if you want to use the ``wss://`` protocol? Again, if you are using your vanity
-alias under the *.dotcloud.com* domain, you have nothing to do. It works out of the
-box.
+What if you want to use the ``wss://`` protocol? Again, if you are using your service URL
+under the *.dotcloud.com* domain, you have nothing to do. It works out of the box.
 
 If you are using a custom SSL certificate, you need to `contact our support
 <http://support.dotcloud.com>`_, and we will upgrade your SSL load balancer to
-the newer version.
+the newer version using `Hipache`_.
 
 
-Technical Notes
----------------
+Historical Notes
+----------------
 
-As of end of March, 2012, there are a few differences between the "old" load balancers
-and the "new" ones:
+As of end of March, 2012, there are a few differences between the "old" load balancers 
+(now only running on dedicated edges) and the "new" `Hipache`_ ones:
 
 * the old load balancers are based on Nginx, while the new ones are based on Node.js;
 * the old load balancers don't support the WebSocket protocol, while the new ones do;
@@ -54,3 +55,5 @@ and the "new" ones:
   live back-end (even if it's a POST request), while the new load balancers serve an
   error page (but subsequent requests won't hit the dead back-end since it has been
   flagged dead).
+
+.. _Hipache: https://github.com/dotcloud/hipache
