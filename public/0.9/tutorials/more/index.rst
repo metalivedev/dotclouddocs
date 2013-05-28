@@ -12,6 +12,7 @@ Tutorials:
 
    amazon-rds
    cloudamqp
+   cloud-health-check
    newrelic
    nodesocket
    serverdensity
