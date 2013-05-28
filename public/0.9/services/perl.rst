@@ -26,6 +26,8 @@ You can also check the following external blog posts:
    www:
      type: perl
      approot: helloperl
+     requirements:
+       - App::cpanminus
 
 This Build File instructs the platform to use the code in the subdirectory
 "helloperl" for our service. Our "ramen-on-dotcloud" directory will have
@@ -55,8 +57,8 @@ and add Plack in the dependencies, as shown below:
    PREREQ_PM => {
        'Test::More' => 0,
        'YAML'       => 0,
-       'Dancer'     => 1.3030,
-       'Plack'      => 0.9974,
+       'Dancer'     => 1.3113,
+       'Plack'      => 0,
    },
 
 .. include:: service-push.inc
