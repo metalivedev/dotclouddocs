@@ -23,19 +23,29 @@ What is your Support SLA?
 | Support Level | Operations Support                | Development Support                   |
 +===============+===================================+=======================================+
 | Expedited     | * 24/7 application monitor        | * ticket response same business day   |
-|               | * 24/7 paging                     | * live chat via tickets and IRC       |
+|               | * 24/7 paging                     | * live chat via tickets and `IRC`_    |
 |               | * <30 minute response             |                                       |
 +---------------+-----------------------------------+---------------------------------------+
 | Live          | * 24/7 container monitoring       | * ticket response < 2 business days   |
-|               | * <1 hour response, business days | * live chat via tickets and IRC       |
+|               | * <1 hour response, business days | * live chat via tickets and `IRC`_    |
 +---------------+-----------------------------------+---------------------------------------+
 
+.. _IRC: http://webchat.freenode.net/?channels=dotcloud
 
 Where is dotCloud hosted?
 -------------------------
 
 dotCloud runs on Amazon EC2. More specifically, we run on the
 us-east-1 region, across multiple availability zones.
+
+
+Can I run dotCloud on a different cloud than EC2?
+-------------------------------------------------
+
+No, we only run on AWS East. If you are interested in hosting a
+PaaS-like service on other hosting providers, you might want to learn
+more about our open source container system, `Docker
+<http://docker.io>`_
 
 
 Can I use multiple databases together?
@@ -90,13 +100,6 @@ around. We take advantage of that fact to deliver massive savings in
 engineering and sysadmin time.
 
 
-Can I run dotCloud on a different cloud than EC2?
--------------------------------------------------
-
-Not right now. However, this is on our roadmap. If you feel strongly
-about it, let us know and it will happen sooner!
-
-
 How do you handle scaling?
 --------------------------
 
@@ -109,12 +112,9 @@ scaling strategy specific to each component. For example, an
 application server will be automatically attached to our http load
 balancers.
 
-Sometimes different scaling strategies are necessary for different
-usage profiles: for example MongoDB will benefit from additional
-slaves in a read-intensive environment, but will need a more
-sophisticated setup in write-intensive scenarios. We will offer a
-choice of scaling strategy whenever it's relevant.
-
+There are some services our platform does not know how to scale
+horizontally. Please check the documentation of the services which
+interest you.
 
 Can you magically scale a component not designed to scale?
 ----------------------------------------------------------
@@ -133,10 +133,13 @@ How do you handle upgrades?
 ---------------------------
 
 Each component has its own release cycle, managed by our in-house
-expert. Upgrades are prudent, thoroughly tested, and favor stability.
+expert. Upgrades are prudent, thoroughly tested, and favor
+stability. Since we favor stability, many services have older versions
+of services.
 
-If there is demand for it, we will also publish a bleeding edge version
-as a separate component.
+For more recent releases, you can use the :doc:`custom service
+<services/custom>` to install exactly what you want. There are many
+`examples. <https://github.com/search?q=on-dotcloud&type=Repositories>`_
 
 
 Can I use my own domain name with dotCloud?
@@ -153,10 +156,10 @@ If your application is available over http://<myapp-myuser>.dotcloud.com/,
 it will also be available over https://<myapp-myuser>.dotcloud.com/.
 
 Note, however, that if you want to have SSL on your own domain name,
-you will need to purchase your own SSL certificate, and upgrade to
-one of our paying offers. Why? Because we will need to dedicate a load
-balancer instance to your application (since SSL requires at least one
-IP address per domain, or more accurately, per certificate).
+you will need to purchase your own SSL certificate, and your bill will
+increase. Why? Because we will need to dedicate a load balancer
+instance to your application (since SSL requires at least one IP
+address per domain, or more accurately, per certificate).
 
 
 How can I setup a crontab?
@@ -165,3 +168,10 @@ How can I setup a crontab?
 You can do it manually (using ``dotcloud run myservice`` then ``crontab``), or automatically
 through a postinstall script. This is documented in the :doc:`Periodic Tasks
 guide <guides/periodic-tasks>`.
+
+Why Are There So Many Requests for /CloudHealthCheck?
+-----------------------------------------------------
+
+That's part of our load balancer system, which is trying to decide if
+it should keep that service in the loadbalanced rotation. For more
+information, please see :doc:`tutorials/more/cloud-health-check`.
