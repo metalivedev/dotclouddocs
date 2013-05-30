@@ -5,6 +5,11 @@
 Amazon's RDS
 ============
 
+.. note::
+
+    Please ensure you're setting this configuration up for "US East
+    (N. Virginia) Region"
+
 1. Login to your Amazon AWS Management Console
 
 2. Click the RDS tab (and sign up as necessary)
