@@ -12,5 +12,5 @@ Tutorials:
 
    thin
    unicorn
-.. redmine
-.. resque
+   redmine
+   resque

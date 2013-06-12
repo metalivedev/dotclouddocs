@@ -9,7 +9,7 @@ You can run actions at periodic intervals that can be minutes, hours, days or
 even months. Periodic tasks can be:
 
 - Database maintenance (e.g: compacting);
-- :doc:`Backups </guides/database-backup>`;
+- :doc:`Backups </guides/backups>`;
 - Bulk E-mails (e.g: notifications, daily digest);
 - A program polling a third party service to update your database...
 

@@ -16,5 +16,5 @@ Tutorials:
    newrelic
    resque
    symfony
-.. joomla
-.. wordpress
+   joomla
+

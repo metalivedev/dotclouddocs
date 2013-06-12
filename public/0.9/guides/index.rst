@@ -26,8 +26,10 @@ Contents:
    persistent-data
    scaling
    backups
+   reconnect
    emails
    ssh
    ssl
+   s3fs
    accounts
    websockets

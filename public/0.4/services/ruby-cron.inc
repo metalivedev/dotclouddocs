@@ -1,10 +1,11 @@
 Running cron jobs
 -----------------
 
-We use `RVM <https://rvm.io/>`_ to manage the different versions of Ruby that
-you can use on the ruby service. This causes some problems when you want to run
-cron jobs. In order to use the correct version of Ruby, you need to first
-tell cron what Ruby version to use. There are a few different ways of doing
+We use `the Ruby Version Manager (RVM) <https://rvm.io/>`_ to manage
+the different versions of Ruby that you can use on the ruby
+service. This causes some problems when you want to run cron jobs. In
+order to use the correct version of Ruby, you need to first tell cron
+what Ruby version to use. There are a few different ways of doing
 this, but we will recommend the most straightforward way here.
 
 To use an RVM Ruby from cron, we need to invoke our own bash session, like so::
@@ -16,7 +17,7 @@ To use an RVM Ruby from cron, we need to invoke our own bash session, like so::
     * * * * * /bin/bash -l -c '~/current/cron_command.rb'
 
 /bin/bash -l -c Explained
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We are wrapping our command in a bash session. The -c option tells bash a
 command follows. The -l option tells bash to load the entire environment.

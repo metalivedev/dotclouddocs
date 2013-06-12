@@ -14,8 +14,8 @@ daemon.
 
 Here is how to use the New Relic client version 3.x on dotCloud. 
 You will need:
-  * a PHP application (let's say it is in directory ``myapp``)
-  * a New Relic `license key <https://newrelic.com/docs/php/new-relic-for-php#license_key>`_
+* a PHP application (let's say it is in directory ``myapp``)
+* a New Relic `license key <https://newrelic.com/docs/php/new-relic-for-php#license_key>`_
 
 .. contents::
    :local:

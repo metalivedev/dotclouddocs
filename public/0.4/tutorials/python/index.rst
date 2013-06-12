@@ -15,4 +15,4 @@ Tutorials:
    django-mongodb
    geodjango
    mobwrite
-.. web2py
+

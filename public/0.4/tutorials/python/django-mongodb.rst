@@ -169,7 +169,7 @@ settings.
 See http://docs.dotcloud.com/guides/environment/ for more details about
 the Environment File.
 
-`hellodjango/settings.py <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/e57297673f96b7e411ccc2801cb89b1bfb0de7ce/hellodjango/settings.py>`_:
+`hellodjango/settings.py step 2 <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/e57297673f96b7e411ccc2801cb89b1bfb0de7ce/hellodjango/settings.py>`_:
 
    .. code-block:: python
 
@@ -246,7 +246,7 @@ admin site work correctly. Long story short, ``djangotoolbox``
 allows us to do some JOINs on non-relational databases.
 
 
-`hellodjango/settings.py <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/c39455eef8eb9e4a95620a8d6db2ae3e6c9d8e16/hellodjango/settings.py>`_:
+`hellodjango/settings.py step 3 <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/c39455eef8eb9e4a95620a8d6db2ae3e6c9d8e16/hellodjango/settings.py>`_:
 
    .. code-block:: python
 
@@ -275,7 +275,7 @@ We will now activate the Django administration application.
 Nothing is specific to DotCloud here: we just uncomment the relevant
 lines of code in ``settings.py`` and ``urls.py``.
 
-`hellodjango/settings.py <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/12430eb61eb4b46e5c45401b45b59d9688b11426/hellodjango/settings.py>`_:
+`hellodjango/settings.py step 4 <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/12430eb61eb4b46e5c45401b45b59d9688b11426/hellodjango/settings.py>`_:
 
    .. code-block:: python
 
@@ -297,7 +297,7 @@ lines of code in ``settings.py`` and ``urls.py``.
 
       # …
 
-`hellodjango/urls.py <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/12430eb61eb4b46e5c45401b45b59d9688b11426/hellodjango/urls.py>`_:
+`hellodjango/urls.py (updated) <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/12430eb61eb4b46e5c45401b45b59d9688b11426/hellodjango/urls.py>`_:
 
    .. code-block:: python
 
@@ -395,7 +395,7 @@ password, for instance.
           u.is_staff = True
           u.save()
 
-`postinstall <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/2f0975b1c91d3bf4d46b369b5615a26284510064/postinstall>`_:
+`postinstall (updated) <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/2f0975b1c91d3bf4d46b369b5615a26284510064/postinstall>`_:
 
    .. code-block:: sh
 
@@ -436,7 +436,7 @@ The last step is to add the ``collectstatic`` management command to
 our ``postinstall`` script. Before calling it, we create the required
 directories, just in case.
 
-`hellodjango/settings.py <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/41919d72aa35486eacc1bf890ca519aaadfde75d/hellodjango/settings.py>`_:
+`hellodjango/settings.py step 5 <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/41919d72aa35486eacc1bf890ca519aaadfde75d/hellodjango/settings.py>`_:
 
    .. code-block:: python
 
@@ -475,7 +475,7 @@ directories, just in case.
       location /media/ { root /home/dotcloud/data ; }
       location /static/ { root /home/dotcloud/volatile ; }
 
-`postinstall <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/41919d72aa35486eacc1bf890ca519aaadfde75d/postinstall>`_:
+`postinstall (updated again) <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/41919d72aa35486eacc1bf890ca519aaadfde75d/postinstall>`_:
 
    .. code-block:: sh
 
@@ -518,7 +518,7 @@ every 10 seconds. It exists as soon as the connection is successful.
 If the connection fails after 10 minutes, it aborts (as a failsafe
 feature).
 
-`postinstall <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/5a0c613c0ba636586df70605b2d96192aae2dcf3/postinstall>`_:
+`postinstall (final touches) <https://github.com/jpetazzo/django-and-mongodb-on-dotcloud/blob/5a0c613c0ba636586df70605b2d96192aae2dcf3/postinstall>`_:
 
    .. code-block:: sh
 

@@ -48,7 +48,7 @@ When you have all files in place (or when you've cloned the git repo), create an
 
 Visiting the URL specified in ``dotcloud url memcachierruby`` will show a basic "Hello, World" app:
 
-.. image:: https://img.skitch.com/20120830-qs4xnsuq6ta5grx7h2d6ndenfi.jpg
+.. figure:: memcachier-0.jpg
    :alt: Hello World
 
 
@@ -130,7 +130,7 @@ And here's the new `index.erb` file::
 
 Visiting your app again should show something like this:
 
-.. image:: https://img.skitch.com/20120830-p3peae46k93jrm3txuftekt2s4.jpg
+.. figure:: memcachier-1.jpg
    :alt: Caching
 
 
