@@ -14,6 +14,23 @@ architecture of the services within your application. This information
 enables dotCloud to automatically create a custom stack designed for
 your application.
 
+The services you define in your `dotcloud.yml` file define your
+application. The dotCloud platform gives each code service the
+information it needs to access the other services within the same
+application (via the :doc:`environment file <environment>`) so that
+the application services can work together closely.
+
+Location
+--------
+
+The `dotcloud.yml` build file must be located at the root of your
+source tree. For example::
+
+   myapp/
+   ├── dotcloud.yml
+   ├── admin/ (source code for adminstration backend)
+   └── frontend/ (source code for frontend)
+ 
 
 Example dotcloud.yml
 --------------------
@@ -169,11 +186,13 @@ approot: Specifying the Root Directory of a Service
 
 If your stack uses multiple web services, you will probably want to put
 the source of each web service in a different directory. You can use the
-optional ``approot`` attribute to define a root directory for each service.
+optional ``approot`` attribute to define a root directory for each
+service.
 
 For instance, if your code is structured like this::
 
    myapp/
+   ├── dotcloud.yml
    ├── admin/
    │   ├── djangoproj/
    │   │   ├── settings.py
@@ -352,8 +371,8 @@ suffixed with ``_0``.
    ``bind()`` to local port 42801), but it will be accessible from the
    outside using a totally different port like 17455.
 
-environment: Defining Environment Variable
-------------------------------------------
+environment: Defining Environment Variables
+-------------------------------------------
 
 The recommended way to set environment variables is to use the
 ``dotcloud env`` command. You can, however, also define them in
