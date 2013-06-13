@@ -28,66 +28,17 @@ Interface client (CLI) installed on your computer. If you have previously instal
       run ``sudo apt-get install python-setuptools``. Then install 
       ``pip`` and ``dotcloud`` as shown above.
 
-   .. tab:: Windows
-
-      Windows is not officially supported at this time. However, if you
-      feel brave, here is how to get dotCloud running on Windows in less than
-      one minute (not counting time to download).
-
-      #. Start the `Cygwin Setup <http://cygwin.com/setup.exe>`_.
-      #. Select default choices until you reach the package selection dialog.
-      #. Enable the following packages:
-
-         * net/openssh
-         * net/rsync
-         * devel/git
-         * devel/mercurial
-         * python/python (make sure it's at least 2.6!)
-         * web/wget
-
-      #. After the installation, you should have a Cygwin icon on your desktop.
-         Start it: you will get a command-line shell.
-      #. Download easy_install
-         
-          .. code-block:: none
-
-            wget http://peak.telecommunity.com/dist/ez_setup.py
-
-      #. Install it
-         
-          .. code-block:: none
-
-            python ez_setup.py
-
-      #. You now have easy_install; let's use it to install pip
-         
-          .. code-block:: none
-
-            easy_install pip
-
-      #. Now install dotcloud
-         
-          .. code-block:: none
-         
-            pip install dotcloud
-
-      That's it! Remember to always go through the Cygwin shell when running
-      "dotcloud".
-
-      .. note::
-
-         If you already have Cygwin installed and are actually upgrading it
-         when setting up dotCloud, you might have to do a "rebaseall".
-         If you see weird error messages in Cygwin after upgrading, read
-         `Cygwin Upgrades and rebaseall
-         <http://www.heikkitoivonen.net/blog/2008/11/26/cygwin-upgrades-and-rebaseall/>`_
-         for a fix! (Thanks to Kevin Li for this tip!)
-
    .. tab:: Mac OS X
 
       To install, open your terminal and run the following command::
 
         sudo easy_install pip && sudo pip install dotcloud
+
+   .. tab:: Windows
+
+      dotCloud developer support cannot help you install or use the
+      ``dotcloud`` CLI on Windows. You may find some help on
+      `StackOverflow <http://stackoverflow.com/search?q=%5Bdotcloud%5D+windows>`_ (in particular, the old installation steps are `here <http://stackoverflow.com/questions/16969119/dotcloud-push-on-cygwin-fails-with-rsync-error-unexplained-error-code-255>`_ )
 
 When the installation is finished, run “dotcloud setup” for the first time and
 enter your dotCloud credentials:
