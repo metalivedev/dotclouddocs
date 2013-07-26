@@ -1148,3 +1148,10 @@ Scaling
 
 If you plan on running a production application, it is recommended that you scale your application accordingly.
 If you need help figuring out how to scale your application you should reference the :doc:`dotCloud scaling guide </guides/scaling/>`.
+
+Advanced Debugging with Werkzeug
+--------------------------------
+
+This tutorial used to include some tips on how to use Werkzeug, but
+this information has moved to `Stack
+Overflow <http://stackoverflow.com/questions/17689797/how-to-use-werkzeug-debugger-in-dotcloud?noredirect=1#comment26054122_17689797>`_.
