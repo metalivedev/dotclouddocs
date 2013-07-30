@@ -224,14 +224,20 @@ For example, this is what you would have if you wanted Python 2.7.x:
 Custom uWSGI Configuration
 --------------------------
 
-You can define additional uWSGI parameters in a *uwsgi.conf* file at the root
-of your application. For example:
+uWSGI has a bazillion ways to configure it. The main ways are:
 
-.. code-block:: nginx
+  1. Some special parameters *can only* be set in the ``dotcloud.yml`` config section
+  2. via environment variables, which you can set either by:
 
-   uwsgi_param   ENVIRONMENT  prod;
+     * ``dotcloud env set`` or
+     * in the ``dotcloud.yml`` file
 
-You can also modify the following uWSGI options in the config section of
+  3. via Nginx using ``~/current/uwsgi.conf`` (it gets pulled into ``/etc/nginx/sites-enabled/default``)
+
+uWSGI config via a config section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can modify the following uWSGI options in the config section of
 ``"dotcloud.yml"``:
 
 - ``uwsgi_processes``: integer, the number of workers to spawn (the default is 4);
@@ -263,6 +269,32 @@ Here is an example:
        uwsgi_single_interpreter: true
 
 .. include:: /guides/config-change.inc
+
+uWSGI Config via Environment Variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remember when you use environement variables that you must start them 
+with UWSGI\_ and change any hyphens ("-") into underscores ("_")
+(`uWSGI docs <https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html#environment-variables>`_).
+There are two ways to set environment variables:
+  1. the ``dotcloud.yml`` *environment* section,
+  2. using ``dotcloud env set``
+Using the ``dotcloud.yml`` environment section lets you set the parameters 
+on a *per-service* basis. If you set the environment variables via 
+``dotcloud env`` then they will apply to all your services
+(so all your Python/uWSGI services would be affected).
+
+uWSGI Config via Nginx
+^^^^^^^^^^^^^^^^^^^^^^
+
+You can define additional uWSGI parameters in a *uwsgi.conf* file at the root
+of your application. 
+The Nginx wiki `mentions it briefly <http://wiki.nginx.org/HttpUwsgiModule#uwsgi_param>`_
+For example:
+
+.. code-block:: nginx
+
+   uwsgi_param   ENVIRONMENT  prod;
 
 New Relic
 ---------
