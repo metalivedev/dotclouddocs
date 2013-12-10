@@ -13,6 +13,7 @@ Tutorials:
    amazon-rds
    cloudamqp
    cloud-health-check
+   codeship
    newrelic
    nodesocket
    serverdensity

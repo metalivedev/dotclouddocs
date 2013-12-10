@@ -30,8 +30,9 @@ help:
 #	@echo "  doctest   to run all doctests embedded in the documentation (if enabled)"
 #	@echo "  figures   to compile figures with ditaa"
 #	@echo "  html      to build all the documentation locally"
-	@echo "  docs      to build the public docs and upload to docs.dotcloud.com"
+	@echo "  docs      to build the public dotCloud PaaS docs"
 	@echo "  pdf       to build a PDF of the whole doc"
+	@echo "  server    to build the docs and start a local server"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -46,6 +47,9 @@ docs: $(VERSIONS)
 	@echo "( cd $(BUILDDIR)/newdocs.www ; exec python -m SimpleHTTPServer ) & firefox http://localhost:8000/ ; fg %+"
 	@echo "or (on the platform@dotcloud.com dotCloud account):"
 	@echo "dotcloud push docs $(BUILDDIR)/newdocs.www"
+
+server: docs
+	cd $(BUILDDIR)/newdocs.www ; exec python -m SimpleHTTPServer
 
 $(VERSIONS):
 	@echo "Building $@"
